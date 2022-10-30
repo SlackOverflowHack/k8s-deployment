@@ -19,14 +19,21 @@ spec:
     spec:
       containers:
       - name: swipeback
-        image: registry.goebel.app/jonas/hackathon-swipeback:5
+        image: registry.goebel.app/jonas/hackathon-swipeback:6
         imagePullPolicy: ""
         envFrom:
           - secretRef:
               name: swipeback-env
         ports:
         - containerPort: 80
+        volumeMounts:
+        - mountPath: /var/www/html/firebaseconfig.json
+          subPath: firebaseconfig.json
+          name: firebaseconfig
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
       restartPolicy: Always
-status: {}
+      volumes:
+      - name: firebaseconfig
+        configMap:
+          name: firebaseconfig
