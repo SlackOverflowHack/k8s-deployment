@@ -15,3 +15,12 @@
     ```bash
     kubectl create -n sportswipe secret docker-registry regcred --docker-server=registry.goebel.app --docker-username=_token --docker-password=<your-pword> --docker-email=<your-email>
     ```
+
+## Update a secret
+```bash
+kubectl -n sportswipe create secret generic swipeback-env \
+    --save-config --dry-run=client \
+    --from-env-file=./.env \
+    -o yaml | 
+  kubectl apply -f -
+```
