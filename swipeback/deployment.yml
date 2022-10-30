@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: swipeback
-        image: registry.goebel.app/jonas/hackathon-swipeback:4
+        image: registry.goebel.app/jonas/hackathon-swipeback:5
         imagePullPolicy: ""
         envFrom:
           - secretRef:
